@@ -40,7 +40,7 @@
     <?php include'./inc/views/sideBar.php' ?>
     <div class="main-panel" id="main-panel">
     <?php include'./inc/views/nav.php'?>
-    <div class="card bg-dark text-white mw-100">
+      <div class="card bg-dark text-white mw-100">
         <img class="card-img mh-100 img-fluid" src="./img/Banner-1-1151x270.jpg" alt="Card image" style="filter: brightness(60%);">
         <div class="card-img-overlay mh-50 mt-5">
           <h4 class="card-title">Card title</h4>
@@ -48,8 +48,10 @@
           <p class="card-text">Last updated 3 mins ago</p>
         </div>
       </div>
-      <div class="content">
-       
+
+
+      <div class="content bg-red border border-primary">
+        <a href="">hola</a>
       </div>
      
       <?php include'./inc/views/footer.php'?>
