@@ -13,13 +13,13 @@
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
           <li class="active ">
-            <a href="./dashboard.html">
+            <a href="./index.php">
               <i class="now-ui-icons design_app"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-            <a href="./icons.html">
+            <a href="...">
               <i class="now-ui-icons education_atom"></i>
               <p>Icons</p>
             </a>
@@ -37,9 +37,9 @@
             </a>
           </li>
           <li>
-            <a href="./user.html">
+            <a href="./user.php">
               <i class="now-ui-icons users_single-02"></i>
-              <p>User Profile</p>
+              <p>Perfil de Usuario</p>
             </a>
           </li>
           <li>
