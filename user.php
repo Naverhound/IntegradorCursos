@@ -42,7 +42,7 @@
     <div class="main-panel" id="main-panel">
     <?php include'./inc/views/nav.php'?>
 
-      <div class="content">
+      <div class="content bg-dark pt-5">
             
       </div>
      
