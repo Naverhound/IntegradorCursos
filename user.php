@@ -42,8 +42,7 @@
     <div class="main-panel" id="main-panel">
     <?php include'./inc/views/nav.php'?>
 
-      <div class="content bg-dark ">
-              <h3 >Cursos Adquiridos</h3>
+      <div class="content bg-dark pt-5">
             
            
       </div>
