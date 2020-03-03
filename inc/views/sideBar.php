@@ -1,4 +1,4 @@
-<div class="sidebar " data-color="red">
+<div class="sidebar " data-color="orange">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
@@ -28,6 +28,12 @@
             <a href="./user.php">
               <i class="now-ui-icons users_single-02"></i>
               <p>Perfil de Usuario</p>
+            </a>
+          </li>
+          <li>
+            <a href="./dashboard/dash.php">
+            <i class="now-ui-icons arrows-1_cloud-download-93"></i>
+              <p>Control de Productos</p>
             </a>
           </li>
         </ul>
