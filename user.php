@@ -43,7 +43,7 @@
     <?php include'./inc/views/nav.php'?>
 
       <div class="content">
-      
+            
       </div>
      
       <?php include'./inc/views/footer.php'?>
