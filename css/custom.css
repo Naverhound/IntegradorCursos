@@ -5,7 +5,7 @@
     background: -o-linear-gradient(53deg, rgba(153,218,255,1) 0%, rgba(123,33,128,1) 100%); /* opera 11.10+ */
     background: -ms-linear-gradient(53deg, rgba(153,218,255,1) 0%, rgba(123,33,128,1) 100%); /* ie10+ */
     background: linear-gradient(37deg, rgba(153,218,255,1) 0%, rgba(123,33,128,1) 100%); /* w3c */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7B2180', endColorstr='#99DAFF',GradientType=0 ); /* ie6-9 */ 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7B2180', endColorstr='#99DAFF',GradientType=0 ); /* ie6-9 */
 }
 .gradient2{
     background: -moz-linear-gradient(45deg, rgba(247,255,194,1) 0%, rgba(128,125,107,1) 100%); /* ff3.6+ */
@@ -15,5 +15,10 @@
     background: -ms-linear-gradient(45deg, rgba(247,255,194,1) 0%, rgba(128,125,107,1) 100%); /* ie10+ */
     background: linear-gradient(45deg, rgba(247,255,194,1) 0%, rgba(128,125,107,1) 100%); /* w3c */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#807D6B', endColorstr='#F7FFC2',GradientType=1 ); /* ie6-9 */
+
+}
+
+.imagen{
+  overflow: hidden;
 
 }

@@ -34,19 +34,62 @@ if(isset($_SESSION['usuario'])){
     <?php include'./inc/views/sideBar.php' ?>
     <div class="main-panel" id="main-panel">
     <?php include'./inc/views/nav.php'?>
-      <div class="card bg-dark text-white mw-100">
-        <img class="card-img mh-100 img-fluid" src="./img/Banner-1-1151x270.jpg" alt="Card image" style="filter: brightness(60%);">
-        <div class="card-img-overlay mh-50 mt-5">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text">Last updated 3 mins ago</p>
-        </div>
+
+
+    <div class="mt-5">
+        <h2 class="h5">
+          Productos
+          <button class="btn border border-dark">
+              <i class="fa fa-plus"></i>
+              NEW
+          </button>
+        </h2>
       </div>
-
-
-      <div class="content bg-red border border-primary">
+      <div class="content bg-red border border-primary mt-5">
         <div class="row">
-          <?php
+
+        <div class="bg-dark mt-3 mr-3" >
+
+            <div class="imagen">
+              <img src="./img/signin-image.jpg" width="200px" height="250px">
+            </div>
+            <div class="" >
+              <h3><a href="">Categoria</a></h3>
+              <h4><a href="">nombre</a></h4>
+              <p class="text-warning">Descripcion</p>
+              <div class="text-right">
+                <div class="text-warning">$10.00</div>
+                <div class="">
+                <a href="" class="basura"><i class="fa fa-trash"></i></a>
+                    <a href="" class="btnEdit"><i class="fa fa-edit"></i></a>
+                </div>
+              </div>
+            </div>
+            </div>
+
+
+
+            <div class="bg-dark mt-3 mr-3" >
+
+            <div class="imagen">
+              <img src="./img/signin-image.jpg" width="200px" height="250px">
+            </div>
+            <div class="" >
+              <h3><a href="">Categoria</a></h3>
+              <h4><a href="">nombre</a></h4>
+              <p class="text-warning">Descripcion</p>
+              <div class="text-right">
+                <div class="text-warning">$10.00</div>
+                <div class="">
+                <a href="" class="basura"><i class="fa fa-trash"></i></a>
+                    <a href="" class="btnEdit"><i class="fa fa-edit"></i></a>
+                </div>
+              </div>
+            </div>
+            </div>
+
+
+         <!-- <?php
           include './inc/functions/conection.php';
           $resultado = $conn->query("select * from usercourses where idusert=")or die($conn ->error);
           while($fila=mysqli_fetch_array($resultado)){
@@ -74,7 +117,9 @@ if(isset($_SESSION['usuario'])){
                 </div>
                 </div>
               <?php } ?>
-          <?php } ?>
+          <?php } ?>-->
+
+
         </div>
       </div>
 
