@@ -1,17 +1,15 @@
-<?php 
+<?php
 include '../inc/functions/conection.php';
 if(isset($_POST['action'])){
-    
-    $action=$_POST['action'];
+  $action=$_POST['action'];
+    if($action==='insert'){
     $nr=$_POST['name'];
     $lnr=$_POST['lname'];
     $er=$_POST['em'];
     $pr=$_POST['pass'];
     $s=$_POST['status'];
-    
-    if($action==='insert'){
         if($nr!=''||$lnr!=''||$er!=''||$pr!=''){
-           
+
             //start verifying the email existence
                 $statement=$conn->prepare("SELECT email FROM users WHERE email=?");
                 $statement->bind_param('s',$er);//send the param to the query
@@ -35,15 +33,15 @@ if(isset($_POST['action'])){
                 $statement=$conn->prepare('INSERT INTO users (name,last_name,password,email,status) VALUES (?,?,?,?,?)');
                 $statement->bind_param('sssss',$nr,$lnr,$hash_password,$er,$s);//send the param to the query
                 $statement->execute();
-                $lastStmtId= $statement->insert_id;  
+                $lastStmtId= $statement->insert_id;
                     $respuesta=array(
                     'resultado'=>'inserted'
-                    ); 
-                               
+                    );
+
                 }//end of else when the user is new
 
                 if(isset($_FILES['img']['name'])){//check if the user sent an image to upload
-                        
+
                     $temp = explode(".", $_FILES['img']['name']);
                     $extension = end($temp);
                     $mime = $_FILES['img']['type'];
@@ -59,7 +57,7 @@ if(isset($_POST['action'])){
                             if(move_uploaded_file($_FILES['img']['tmp_name'], '../img/usersP/' . $Fname)){
                                 $statement=$conn->prepare('UPDATE users SET img = ? WHERE id = ?');
                                 $statement->bind_param('si',$Fname,$lastStmtId);
-                                $statement->execute(); 
+                                $statement->execute();
                             }//end if of moving the file into the server path (route)
                             else{
                                 $respuesta=array(
@@ -70,13 +68,19 @@ if(isset($_POST['action'])){
                 }//end if when there is no file loaded by the user
 
             }
-            
+
         $statement->close();
-        $conn->close(); 
+        $conn->close();
         echo json_encode($respuesta);
-    }
-   
-    
+    }else if($action=='check'){
+      $email=$_POST['email'];
+      $pass=$_POST['pass'];
+      if($email!=''||$pass!=''){
+
+      }
+    }//if login
+
+
 }else if(isset($_GET['action'])){
 
 }else{

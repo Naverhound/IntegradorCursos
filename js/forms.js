@@ -24,14 +24,14 @@ e.preventDefault();
             df.append('image',i);
             df.append('description',d);
           //  console.log(...df);//se confirmó que los datos están agregandose correctamente
-            
+
             $.ajax({
                 type: "POST",
                 url: "url",
                 data: "data",
                 dataType: "json",
                 success: function (response) {
-                    
+
                 }
             });
     }
@@ -60,9 +60,9 @@ function insU(e) {
             df.append('action','insert');
 
            /* for (var value of df.values()) {//check content in form data
-                console.log(value); 
+                console.log(value);
              }*/
-            
+
             //now you have the data in a pseudo JSON you start the AJAX petition
            $.ajax({
                 type: "post",
@@ -74,13 +74,27 @@ function insU(e) {
                 success: function (xhr,status) {
                     var response= xhr;
                     console.log(response);
-                    
-                    
-                }
-            });  
+
+
+                  }
+            });
             }
-            
+
         }else{
             alert('Faltan datos importantes')
         }
+}
+
+function checkU(e){
+  e.preventDefault();
+  var email = $('#mail').val(),
+  pass=$('#pass').val();
+  if(email==' '||pass==' '){
+    alert("Datos sin llenar")
+  }else{
+    var datos=new FormData();//formulario serializado que se le agregarán los datos del form del HTML
+            datos.append('email',email);
+            datos.append('pass',pass);
+  }
+
 }
