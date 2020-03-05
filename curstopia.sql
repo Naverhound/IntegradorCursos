@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-03-2020 a las 00:44:56
+-- Tiempo de generación: 05-03-2020 a las 23:10:13
 -- Versión del servidor: 10.3.16-MariaDB
 -- Versión de PHP: 7.3.8
 
@@ -74,8 +74,8 @@ CREATE TABLE `users` (
   `last_name` varchar(30) NOT NULL,
   `password` varchar(60) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `img` varchar(100) NOT NULL,
-  `status` varchar(10) NOT NULL
+  `img` varchar(100) DEFAULT NULL,
+  `status` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -109,7 +109,7 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
