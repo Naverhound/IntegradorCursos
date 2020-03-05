@@ -36,6 +36,12 @@
               <p>Control de Productos</p>
             </a>
           </li>
+          <li>
+            <a href="./mycourses.php">
+            <i class="now-ui-icons files_box"></i>
+              <p>My courses</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
