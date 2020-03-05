@@ -45,11 +45,11 @@
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="now-ui-icons users_single-02"></i>
                   <p>
-                    <span class="d-lg-none d-md-block">Some Actions</span>
+                    <span class="d-lg-none d-md-block">Opciones de Sesión</span>
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Iniciar Sesión</a>
+                  <a class="dropdown-item" href="./signIn.php">Iniciar Sesión</a>
                   <a class="dropdown-item" href="./signUp.php">Registrarse</a>
                 </div>
               </li>

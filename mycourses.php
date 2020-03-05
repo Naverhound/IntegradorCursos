@@ -1,11 +1,4 @@
-<!--<?php
-session_start();
-if(isset($_SESSION['usuario'])){
-  $datosUsuario=$_SESSION['usuario'];
-}else{
-  header ('Location: ../login.html');
-}
-?>-->
+
 
 
 <!DOCTYPE html>

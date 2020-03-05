@@ -33,7 +33,7 @@
           <li>
             <a href="./dashboard/dash.php">
             <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-              <p>Control de Productos</p>
+              <p>Courses</p>
             </a>
           </li>
           <li>
