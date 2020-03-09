@@ -1,0 +1,30 @@
+//insersión de productros antes de subir un curso
+<?php 
+          include './inc/functions/conection.php';
+          $resultado = $conn->query("select * from usercourses where idusert=")or die($conn ->error);
+          while($fila=mysqli_fetch_array($resultado)){
+          ?>
+              <?php
+
+            $resultado2 = $conn->query("select * from courses where id=".$fila['idcourse'])or die($conn->error);
+            while($fila2=mysqli_fetch_array($resultado2)){
+            ?>
+                <div class="product-card">
+
+                <div class="product-tumb">
+                  <img src="./img/productos/<?php echo $fila2['img'];?>" alt="">
+                </div>
+                <div class="product-details">
+                  <span class="product-catagory">Categoria</span>
+                  <h4><a href=""><?php echo $fila2['name'];?></a></h4>
+                  <p><?php echo $fila['descript'];?></p>
+                  <div class="product-bottom-details">
+                    <div class="product-price"><?php echo $fila2['cost'];?></div>
+                    <div class="product-links">
+
+                    </div>
+                  </div>
+                </div>
+                </div>
+              <?php } ?>
+          <?php } ?>
