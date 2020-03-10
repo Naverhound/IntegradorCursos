@@ -95,6 +95,7 @@ function checkU(e){
     var datos=new FormData();//formulario serializado que se le agregarán los datos del form del HTML
             datos.append('email',email);
             datos.append('pass',pass);
+            datos.append('action','check');
   }
 
 }
