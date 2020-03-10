@@ -32,12 +32,59 @@
     <div class="mt-5">
         <h2 class="h5">
           Productos
-          <button class="btn border border-dark">
+          <button type="button" class="btn border border-dark" data-toggle="modal" data-target="#newC">
               <i class="fa fa-plus"></i>
               NEW
           </button>
         </h2>
       </div>
+      <!--Modals-->
+            <div class="modal fade" id="newC" tabindex="-1" role="dialog" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Nuevo Curso</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form id="newC-Form" data-action='insert'>
+                      <div class="form-group">
+                        <label for="name">Nombre de curso</label>
+                        <input type="text"
+                          class="form-control" name="" id="name" aria-describedby="helpId" placeholder="Ej: Curso de GO en 2 Hrs">
+                      </div>
+                      <div class="form-group">
+                        <label for="cost">Costo de curso</label>
+                        <input type="number"
+                          class="form-control" name="" id="cost" aria-describedby="helpId" placeholder="Ej: $150.00">
+                      </div>
+                      <div class="form-group">
+                        <label for="img"></label>
+                        <input type="file" class="form-control-file" name="" id="img" placeholder="" aria-describedby="fileHelpId">
+                        <small id="fileHelpId" class="form-text text-muted">Clic para Cargar imagen</small>
+                      </div>
+                      <div class="form-group">
+                        <label for="cat">Categoría</label>
+                        <input type="text"
+                          class="form-control" name="" id="cat" aria-describedby="helpId" placeholder="Ej: Tecnología">
+                      </div>
+                      <div class="form-group">
+                        <label for="des">Descripción del curso</label>
+                        <textarea class="form-control p-0" name="" id="des" rows="2"></textarea>
+                      </div>
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" >Confirmar Datos</button>
+                  </div>
+                </form>
+                </div>
+              </div>
+            </div>
+      <!--END OF Modals-->
       <div class="content bg-red border border-primary mt-5">
         <div class="row">
 
@@ -53,8 +100,8 @@
               <div class="text-right">
                 <div class="text-warning">$10.00</div>
                 <div class="">
-                <a href="" class="basura"><i class="fa fa-trash"></i></a>
-                    <a href="" class="btnEdit"><i class="fa fa-edit"></i></a>
+                <a href="#" class="basura"><i class="fa fa-trash"></i></a>
+                    <a href="#" class="btnEdit"><i class="fa fa-edit" data-toggle="modal" data-target="#newC"></i></a>
                 </div>
               </div>
             </div>
@@ -68,51 +115,18 @@
               <img src="./img/signin-image.jpg" width="200px" height="250px">
             </div>
             <div class="" >
-              <h3><a href="">Categoria</a></h3>
-              <h4><a href="">nombre</a></h4>
+              <h3><a href="#">Categoria</a></h3>
+              <h4><a href="#">nombre</a></h4>
               <p class="text-warning">Descripcion</p>
               <div class="text-right">
                 <div class="text-warning">$10.00</div>
                 <div class="">
-                <a href="" class="basura"><i class="fa fa-trash"></i></a>
-                    <a href="" class="btnEdit"><i class="fa fa-edit"></i></a>
+                <a href="#" class="basura"><i class="fa fa-trash"></i></a>
+                    <a href="#" class="btnEdit"><i class="fa fa-edit"></i></a>
                 </div>
               </div>
             </div>
             </div>
-
-
-         <!-- <?php
-          include './inc/functions/conection.php';
-          $resultado = $conn->query("select * from usercourses where idusert=")or die($conn ->error);
-          while($fila=mysqli_fetch_array($resultado)){
-          ?>
-              <?php
-
-            $resultado2 = $conn->query("select * from courses where id=".$fila['idcourse'])or die($conn->error);
-            while($fila2=mysqli_fetch_array($resultado2)){
-            ?>
-                <div class="product-card">
-
-                <div class="product-tumb">
-                  <img src="./img/productos/<?php echo $fila2['img'];?>" alt="">
-                </div>
-                <div class="product-details">
-                  <span class="product-catagory">Categoria</span>
-                  <h4><a href=""><?php echo $fila2['name'];?></a></h4>
-                  <p><?php echo $fila['descript'];?></p>
-                  <div class="product-bottom-details">
-                    <div class="product-price"><?php echo $fila2['cost'];?></div>
-                    <div class="product-links">
-
-                    </div>
-                  </div>
-                </div>
-                </div>
-              <?php } ?>
-          <?php } ?>-->
-
-
         </div>
       </div>
 
@@ -122,6 +136,7 @@
   <!--   Core JS Files   -->
   <script src="./assets/js/core/jquery.min.js"></script>
   <script src="./assets/js/core/popper.min.js"></script>
+  <script src="./js/forms.js"></script>
   <script src="./assets/js/core/bootstrap.min.js"></script>
   <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
@@ -132,6 +147,7 @@
   <script src="./assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="./assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
+  
   <script src="./assets/demo/demo.js"></script>
   <script>
     $(document).ready(function() {

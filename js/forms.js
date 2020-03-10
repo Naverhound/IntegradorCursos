@@ -1,41 +1,61 @@
 $(document).ready(function () {
 
-$('#formC').on('submit', insC);
+$('#newC-Form').on('submit', courseC);
 
 $('#register-form').on('submit', insU);
 });
-//para control de cursos, insert,update,delete
-function insC(e){
+//Courses control insert,update delete 
+function courseC(e){
 e.preventDefault();
+//console.log($(e.target).attr('data-action'));//gets the actions of the form who trigered this method
+
         var n=$('#name').val(),
         c=$('#cost').val(),
         ca=$('#cat').val(),
         i=$('#img')[0].files[0],
-        d=$('#descript').val();
-
-
-    if(n==''||c==''||ca==''||i==''){//valida que alguno venga vacio(actua cuando alguno de los mencionados SI está vacio)
+        d=$('#des').val(),
+        action=$(e.target).attr('data-action');
+      if(action==='insert'){//actions to insert a new product
+          if(n==''||c==''||ca==''||i==''){//valida que alguno venga vacio(actua cuando alguno de los mencionados SI está vacio)
             alert('Datos sin llenar correctamente')
-    }else{
-        var df=new FormData();//formulario serializado que se le agregarán los datos del form del HTML
-            df.append('name',n);
-            df.append('cost',c);
-            df.append('category',ca);
-            df.append('image',i);
-            df.append('description',d);
-          //  console.log(...df);//se confirmó que los datos están agregandose correctamente
+            }else{
+                var df=new FormData();//formulario serializado que se le agregarán los datos del form del HTML
+                    df.append('name',n);
+                    df.append('cost',c);
+                    df.append('category',ca);
+                    df.append('image',i);
+                    df.append('description',d);
+                    df.append('action',action);
+                    df.append('idcreator',3);
+                  //  console.log(...df);//se confirmó que los datos están agregandose correctamente
+                  //console.log(df.get('action'));
+                  /*for (var value of df.values()) {//check content in form data
+                        console.log(value);
+                    }*/
+                  
+                    $.ajax({
+                        type: "POST",
+                        url: "./models/productC.php",
+                        data: df,
+                        dataType: "json",
+                        processData: false,
+                        contentType: false,
+                        success: function (xhr,response) {
+                          var response= xhr;
+                          console.log(response);
+                        },
+                        error: function (xhr,error,status) { 
+                          var response= xhr;
+                          console.log('Error' ,response);
+                          
+                        }
+                    });
+            }
+      }else if(action==='update'){//actions to update a product//TODO: captura de datos despues de la consulta de cursos
 
-            $.ajax({
-                type: "POST",
-                url: "url",
-                data: "data",
-                dataType: "json",
-                success: function (response) {
-
-                }
-            });
-    }
+      }
 }
+
 //control de usuarios insert,update delete
 function insU(e) {
     var df;//variable que serán los datos del formulario
@@ -76,7 +96,12 @@ function insU(e) {
                     console.log(response);
 
 
-                  }
+                  },
+                  error: function (xhr,error,status) { 
+                    var response= xhr;
+                    console.log('Error',response);
+                    
+                   }
             });
             }
 
