@@ -1,3 +1,19 @@
+<?php
+
+session_start();
+if(isset($_SESSION['name'])||isset($_SESSION['status'])){
+  $user=$_SESSION['name'];
+  $status=$_SESSION['status'];
+  $numerito=1;
+  $imagen=$_SESSION['img'];
+}else{
+  $status='';
+  $numerito=0;
+  $user='';
+  $imagen='';
+}
+
+?>
 <!--
 
 =========================================================
@@ -19,8 +35,11 @@
 
 <head>
   <meta charset="utf-8" />
-  
-  <link rel="icon" type="image/png" href="./assets/img/zero.png">
+  <?php if($numerito==1){?>
+  <link rel="icon" type="image/png" href="./img/usersP/<?php echo($imagen);?>">
+  <?php }else{?>
+    <link rel="icon" type="image/png" href="./assets/img/zero.png">
+  <?php }?>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     CurseTopia
@@ -51,9 +70,10 @@
 
 
       <div class="content bg-red border border-primary">
-        <a href="">hola</a>
+        <a href=""><?php echo($user);?></a>
+        <h1><?php echo($imagen);?></h1>
       </div>
-     
+
       <?php include'./inc/views/footer.php'?>
     </div>
   </div>
