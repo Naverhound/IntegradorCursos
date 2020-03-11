@@ -110,11 +110,36 @@ $action=$_POST['action'];
         }
         echo json_encode($respuesta);
     }
-}else{
-
-}
+}//end IF for POST petitions
 if(isset($_GET['action'])){//ser invocado por get//TODO:consulta de los cursos existentes
 $action=$_GET['action'];
-}else{
+    if($action==='search'){
+        $idc=filter_var($_GET['idc'], FILTER_SANITIZE_NUMBER_INT);
+        try {
+            $statement=$conn->prepare('SELECT name,cost,img,cat,descript FROM courses WHERE id=?');
+            $statement->bind_param('i',$idc);
+            $statement->execute();
+            $statement->bind_result($name,$cost,$img,$cat,$descript);
+            $statement->fetch();
+            
+            $respuesta= array(
+                'respuesta'=>'founded',
+                'name'=>$name,
+                'cost'=>$cost,
+                'img'=>$img,
+                'cat'=>$cat,
+                'descript'=>$descript
+            );
+            $stmt->close();
+            $conn->close();
+        } catch (Exception $e) {
+            $respuesta = array(
+                'error' => $e->getMessage()
+            );
+        }
+    echo json_encode($respuesta);
+    }
+    else if($action==='eliminate'){
 
-}
+    }
+}//end IF for GET petitions

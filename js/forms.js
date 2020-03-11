@@ -13,11 +13,14 @@ e.preventDefault();
         c=$('#cost').val(),
         ca=$('#cat').val(),
         i=$('#img')[0].files[0],
+        i2=$('#img').val(),
         d=$('#des').val(),
+        io=$('#imgOld').val(),
+        id=$('#idc').val(),
         action=$(e.target).attr('data-action');
       if(action==='insert'){//actions to insert a new product
-          if(n==''||c==''||ca==''||i==''){//valida que alguno venga vacio(actua cuando alguno de los mencionados SI está vacio)
-            alert('Datos sin llenar correctamente')
+          if(n==''||c==''||ca==''||i2==''){//valida que alguno venga vacio(actua cuando alguno de los mencionados SI está vacio)
+            alert('Datos sin llenar correctamente o falta imagen')
             }else{
                 var df=new FormData();//formulario serializado que se le agregarán los datos del form del HTML
                     df.append('name',n);
@@ -40,7 +43,7 @@ e.preventDefault();
                         dataType: "json",
                         processData: false,
                         contentType: false,
-                        success: function (xhr,response) {
+                        success: function (xhr,status) {
                           var response= xhr;
                           console.log(response);
                         },
@@ -52,7 +55,42 @@ e.preventDefault();
                     });
             }
       }else if(action==='update'){//actions to update a product//TODO: captura de datos despues de la consulta de cursos
-
+        
+        if(n==''||c==''||ca==''){
+          alert('Datos necesarios sin llenar correctamente o falta imagen')
+        }else{
+          var df=new FormData();//formulario serializado que se le agregarán los datos del form del HTML
+            df.append('name',n);
+            df.append('cost',c);
+            df.append('category',ca);
+            df.append('image',i);
+            df.append('description',d);
+            df.append('action',action);
+            df.append('idcourse',idcourse);
+          //  console.log(...df);//se confirmó que los datos están agregandose correctamente
+          //console.log(df.get('action'));
+          /*for (var value of df.values()) {//check content in form data
+                console.log(value);
+            }*/
+          
+            $.ajax({
+                type: "POST",
+                url: "./models/productC.php",
+                data: df,
+                dataType: "json",
+                processData: false,
+                contentType: false,
+                success: function (xhr,status) {
+                  var response= xhr;
+                  console.log(response);
+                },
+                error: function (xhr,error,status) { 
+                  var response= xhr;
+                  console.log('Error' ,response);
+                  
+                }
+            });
+        }
       }
 }
 

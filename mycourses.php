@@ -32,7 +32,7 @@
     <div class="mt-5">
         <h2 class="h5">
           Productos
-          <button type="button" class="btn border border-dark" data-toggle="modal" data-target="#newC">
+          <button type="button" class="btn btnN border border-dark" data-toggle="modal" data-target="#newC">
               <i class="fa fa-plus"></i>
               NEW
           </button>
@@ -43,13 +43,13 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title">Nuevo Curso</h5>
+                    <h5 class="modal-title"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form id="newC-Form" data-action='insert'>
+                    <form id="newC-Form" data-action=''>
                       <div class="form-group">
                         <label for="name">Nombre de curso</label>
                         <input type="text"
@@ -74,6 +74,14 @@
                         <label for="des">Descripción del curso</label>
                         <textarea class="form-control p-0" name="" id="des" rows="2"></textarea>
                       </div>
+                      <div class="form-group">
+                        <input type="hidden"
+                          class="form-control" name="" id="idC" aria-describedby="helpId">
+                      </div>
+                      <div class="form-group">
+                        <input type="hidden"
+                          class="form-control" name="" id="imgOld" aria-describedby="helpId">
+                      </div>
                     
                   </div>
                   <div class="modal-footer">
@@ -88,55 +96,40 @@
       <div class="content bg-red border border-primary mt-5">
         <div class="row">
 
-        <div class="bg-dark mt-3 mr-3" >
+        <?php
+            include './inc/functions/conection.php';
+            $result = $conn->query("SELECT * FROM courses") or die($conection->error);
+            while ($row = mysqli_fetch_array($result)) {
+            ?>
+
+        <div class="bg-dark mt-3 mr-3 Course" data-id="<?php echo $row['id']?>">
 
             <div class="imagen">
-              <img src="./img/signin-image.jpg" width="200px" height="250px">
+              <img src="./img/coursesP/<?php echo $row['img']?>" width="200px" height="250px">
             </div>
             <div class="" >
-              <h3><a href="">Categoria</a></h3>
-              <h4><a href="">nombre</a></h4>
-              <p class="text-warning">Descripcion</p>
+              <h3><a href="#">Categoria: <?php echo $row['cat']?></a></h3>
+              <h4><a href="#"><?php echo $row['name']?></a></h4>
+              <p class="text-warning">Descripcion: <?php echo $row['descript']?></p>
               <div class="text-right">
-                <div class="text-warning">$10.00</div>
+                <div class="text-warning">$<?php echo $row['cost']?></div>
                 <div class="">
                 <a href="#" class="basura"><i class="fa fa-trash"></i></a>
                     <a href="#" class="btnEdit"><i class="fa fa-edit" data-toggle="modal" data-target="#newC"></i></a>
                 </div>
               </div>
             </div>
-            </div>
+          </div>
 
-
-
-            <div class="bg-dark mt-3 mr-3" >
-
-            <div class="imagen">
-              <img src="./img/signin-image.jpg" width="200px" height="250px">
-            </div>
-            <div class="" >
-              <h3><a href="#">Categoria</a></h3>
-              <h4><a href="#">nombre</a></h4>
-              <p class="text-warning">Descripcion</p>
-              <div class="text-right">
-                <div class="text-warning">$10.00</div>
-                <div class="">
-                <a href="#" class="basura"><i class="fa fa-trash"></i></a>
-                    <a href="#" class="btnEdit"><i class="fa fa-edit"></i></a>
-                </div>
-              </div>
-            </div>
-            </div>
-        </div>
-      </div>
-
-      <?php include'./inc/views/footer.php'?>
+          <?php } ?>
     </div>
   </div>
+  <?php include'./inc/views/footer.php'?>
   <!--   Core JS Files   -->
   <script src="./assets/js/core/jquery.min.js"></script>
   <script src="./assets/js/core/popper.min.js"></script>
   <script src="./js/forms.js"></script>
+  <script src="./js/main.js"></script>
   <script src="./assets/js/core/bootstrap.min.js"></script>
   <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
