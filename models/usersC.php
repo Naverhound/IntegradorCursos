@@ -76,9 +76,55 @@ if(isset($_POST['action'])){
       $email=$_POST['email'];
       $pass=$_POST['pass'];
       if($email!=''||$pass!=''){
+        try{
+          $stat=$conn->prepare("SELECT id,name,last_name,password,email,img,status from users where email=?");
+          $stat->bind_param('s',$email);
+          $stat->execute();
+          $stat->bind_result($id,$name,$last_name,$password,$email2,$img,$status);
+          $stat->fetch();
+          if($email2){
+            if(password_verify($pass, $password)){
+              session_start();
+              $_SESSION['id']=$id;
+              $_SESSION['name']=$name;
+              $_SESSION['last_name']=$last_name;
+              $_SESSION['password']=$password;
+              $_SESSION['email']=$email2;
+              $_SESSION['img']=$img;
+              $_SESSION['status']=$status;
+              $respuesta=array(
+                'respuesta'=>'correct',
+                'user'=>$name,
+                'status'=>$status,
+                'id'=>$id
+              );
+
+            }else{
+              $respuesta=array(
+                'respuesta'=>'incorrect'
+              );
+            }
+          }else{
+            $respuesta=array(
+              'respuesta'=>'notFound'
+            );
+          }
+          $stat->close();
+        }catch(Exception $e){
+          $respuesta = array(
+            'pass'=>$e->getMessage()
+          );
+
+        }
+
+      }else{
+       $respuesta=array(
+         'respuesta'=>'empty'
+       );
 
       }
-    }//if login
+      echo json_encode($respuesta);
+    }//if login check
 
 
 }else if(isset($_GET['action'])){

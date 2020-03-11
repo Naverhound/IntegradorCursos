@@ -1,3 +1,17 @@
+<?php
+
+session_start();
+if(isset($_SESSION['name'])||isset($_SESSION['status'])){
+  $user=$_SESSION['name'];
+  $status=$_SESSION['status'];
+  $numerito=1;
+}else{
+  $status='';
+  $numerito=0;
+  $user='';
+}
+
+?>
 <!--
 
 =========================================================
@@ -19,7 +33,7 @@
 
 <head>
   <meta charset="utf-8" />
-  
+
   <link rel="icon" type="image/png" href="./assets/img/zero.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
@@ -51,9 +65,9 @@
 
 
       <div class="content bg-red border border-primary">
-        <a href="">hola</a>
+        <a href=""><?php echo($user);?></a>
       </div>
-     
+
       <?php include'./inc/views/footer.php'?>
     </div>
   </div>

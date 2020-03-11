@@ -32,11 +32,11 @@
                         <form method="POST" class="register-form" id="login-form">
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="your_name" id="mail" placeholder="Nombre de Usuario"/>
+                                <input type="text" name="user" id="mail" placeholder="Nombre de Usuario"/>
                             </div>
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="your_pass" id="pass" placeholder="Password"/>
+                                <input type="password" name="pass" id="pass" placeholder="Password"/>
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
@@ -63,5 +63,6 @@
        <!-- JS -->
     <script src="./js/vendor/jquery.min.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./js/forms.js"></script>
 </body>
 </html>

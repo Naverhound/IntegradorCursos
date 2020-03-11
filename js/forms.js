@@ -3,8 +3,12 @@ $(document).ready(function () {
 $('#newC-Form').on('submit', courseC);
 
 $('#register-form').on('submit', insU);
+
+$('#login-form').on('submit', checkU);
 });
-//Courses control insert,update delete 
+
+
+//Courses control insert,update delete
 function courseC(e){
 e.preventDefault();
 //console.log($(e.target).attr('data-action'));//gets the actions of the form who trigered this method
@@ -32,7 +36,7 @@ e.preventDefault();
                   /*for (var value of df.values()) {//check content in form data
                         console.log(value);
                     }*/
-                  
+
                     $.ajax({
                         type: "POST",
                         url: "./models/productC.php",
@@ -42,12 +46,13 @@ e.preventDefault();
                         contentType: false,
                         success: function (xhr,response) {
                           var response= xhr;
+
                           console.log(response);
                         },
-                        error: function (xhr,error,status) { 
+                        error: function (xhr,error,status) {
                           var response= xhr;
                           console.log('Error' ,response);
-                          
+
                         }
                     });
             }
@@ -95,12 +100,11 @@ function insU(e) {
                     var response= xhr;
                     console.log(response);
 
-
                   },
-                  error: function (xhr,error,status) { 
+                  error: function (xhr,error,status) {
                     var response= xhr;
                     console.log('Error',response);
-                    
+
                    }
             });
             }
@@ -114,13 +118,32 @@ function checkU(e){
   e.preventDefault();
   var email = $('#mail').val(),
   pass=$('#pass').val();
-  if(email==' '||pass==' '){
+  if(email===''||pass===''){
     alert("Datos sin llenar")
   }else{
     var datos=new FormData();//formulario serializado que se le agregarán los datos del form del HTML
             datos.append('email',email);
             datos.append('pass',pass);
             datos.append('action','check');
+            $.ajax({
+              type:'post',
+              url: "./models/usersC.php",
+              data: datos,
+              dataType: "json",
+              processData:false,
+              contentType:false,
+              success: function(xhr,status){
+                var response=xhr;
+                console.log(response);
+                alert('hola');
+                window.open('./index.php',"_self");
+              },
+              error: function(xhr,error,status){
+                var response=xhr;
+                console.log('Error',response);
+                alert('adios');
+              }
+            });
   }
 
 }
