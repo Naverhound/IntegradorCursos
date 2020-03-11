@@ -49,8 +49,12 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                <?php if($numerito==0){?>
                   <a class="dropdown-item" href="./signIn.php">Iniciar Sesión</a>
                   <a class="dropdown-item" href="./signUp.php">Registrarse</a>
+                <?php }else{?>
+                  <a class="dropdown-item" href="./logout.php">Logout</a>
+                <?php } ?>
                 </div>
               </li>
             </ul>

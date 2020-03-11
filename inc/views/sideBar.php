@@ -6,6 +6,16 @@
         <a href="" class="simple-text logo-mini">
           CT
         </a>
+
+        <?php if($numerito==1){ ?>
+          <a href="" class="simple-text logo-normal">
+         <?php echo($user);?>
+        </a>
+    <?php }else{?>
+      <a href="" class="simple-text logo-normal">
+         CurseTopia
+        </a>
+    <?php }?>
         <a href="" class="simple-text logo-normal">
           Course Topia
         </a>
