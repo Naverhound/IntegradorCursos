@@ -1,3 +1,17 @@
+<?php
+if(isset($_SESSION['name'])||isset($_SESSION['status'])){
+  $user=$_SESSION['name'];
+  $status=$_SESSION['status'];
+  $numerito=1;
+  $imagen=$_SESSION['img'];
+}else{
+  $status='';
+  $numerito=0;
+  $user='';
+  $imagen='';
+}
+
+?>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
         <div class="container-fluid">

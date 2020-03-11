@@ -6,40 +6,35 @@ $(document).ready(function () {
 function loadData(e) {
     $('#newC').find('.modal-title').text('Editar Curso');
     $('#newC-Form').attr('data-action','update');
-    $idC= $(e.target).closest('.Course').attr('data-id');
+    const idC=$(e.target).closest('.Course').attr('data-id');
     
-    $('#newC-Form').find('#idC').val($idC);
-    var df=new FormData();//formulario serializado que se le agregarán los datos del form del HTML
-                    df.append('idc',$idC);
-                    df.append('action','search');
-                   // console.log(...df);//se confirmó que los datos están agregandose correctamente
-                  //console.log(df.get('action'));
-                  /*for (var value of df.values()) {//check content in form data
-                        console.log(value);
-                    }*/
+    $('#newC-Form').find('#idC').val(idC);
     $.ajax({
         type: "GET",
-        url: "./models/productC.php",
-        data: df,
+        url: `./models/productC.php?idc=${idC}&action=search`,
         dataType: "json",
         processData: false,
         contentType: false,
         success: function (xhr,status) {
             var response= xhr;
-            console.log(response);
-            /*$name= $(e.target).parent().attr('data-name');
-            $cost= $(e.target).parent().attr('data-cost');
-            $cat= $(e.target).parent().attr('data-cat');
-            $descript= $(e.target).parent().attr('data-desc');
-            $id=;
-            $imgOld=;*/
+            console.log(response.respuesta);
+            if(response.respuesta==='founded'){
+            $name=response.name;
+            $cost=response.cost;
+            $cat=response.cat;
+            $descript=response.descript;
+            $imgOld=response.img;
+            $('#newC-Form').find('#name').val($name);
+            $('#newC-Form').find('#cost').val($cost);
+            $('#newC-Form').find('#cat').val($cat);
+            $('#newC-Form').find('#des').val($descript);
+            $('#newC-Form').find('#imgOld').val($imgOld);
+        }
+            
         // console.log($(e.target).parent().attr('data-name'));//tests to find correct selector
             
 
-        /* $('#newC-Form').find('#name').val($name);
-            $('#newC-Form').find('#cost').val($cost);
-            $('#newC-Form').find('#cat').val($cat);
-            $('#newC-Form').find('#des').val($descript);*/
+        
         },
         error: function (xhr,error,status) { 
             var response= xhr;

@@ -113,9 +113,18 @@ $action=$_POST['action'];
 }//end IF for POST petitions
 if(isset($_GET['action'])){//ser invocado por get//TODO:consulta de los cursos existentes
 $action=$_GET['action'];
-    if($action==='search'){
-        $idc=filter_var($_GET['idc'], FILTER_SANITIZE_NUMBER_INT);
-        try {
+/*$respuesta = array(
+    'respuesta' => $idc
+);
+echo json_encode($respuesta);*/
+    if($action==='search'){        
+       $idc=filter_var($_GET['idc'], FILTER_SANITIZE_NUMBER_INT);
+       
+        
+        try { 
+            /*$respuesta = array(
+            'respuesta' => $idc
+        );*/
             $statement=$conn->prepare('SELECT name,cost,img,cat,descript FROM courses WHERE id=?');
             $statement->bind_param('i',$idc);
             $statement->execute();
@@ -130,7 +139,7 @@ $action=$_GET['action'];
                 'cat'=>$cat,
                 'descript'=>$descript
             );
-            $stmt->close();
+            $statement->close();
             $conn->close();
         } catch (Exception $e) {
             $respuesta = array(

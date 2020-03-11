@@ -1,3 +1,17 @@
+<?php
+if(isset($_SESSION['name'])||isset($_SESSION['status'])){
+  $user=$_SESSION['name'];
+  $status=$_SESSION['status'];
+  $numerito=1;
+  $imagen=$_SESSION['img'];
+}else{
+  $status='';
+  $numerito=0;
+  $user='';
+  $imagen='';
+}
+
+?>
 <div class="sidebar " data-color="orange">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
