@@ -20,8 +20,8 @@ e.preventDefault();
         i2=$('#img').val(),
         d=$('#des').val(),
         io=$('#imgOld').val(),
-        id=$('#idc').val(),
         action=$(e.target).attr('data-action');
+        const id=$('#idC').val();
       if(action==='insert'){//actions to insert a new product
           if(n==''||c==''||ca==''||i2==''){//valida que alguno venga vacio(actua cuando alguno de los mencionados SI está vacio)
             alert('Datos sin llenar correctamente o falta imagen')
@@ -65,13 +65,14 @@ e.preventDefault();
           alert('Datos necesarios sin llenar correctamente o falta imagen')
         }else{
           var df=new FormData();//formulario serializado que se le agregarán los datos del form del HTML
+            df.append('idc',id);
             df.append('name',n);
             df.append('cost',c);
             df.append('category',ca);
             df.append('image',i);
+            df.append('imageOld',io);
             df.append('description',d);
             df.append('action',action);
-            df.append('idcourse',idcourse);
           //  console.log(...df);//se confirmó que los datos están agregandose correctamente
           //console.log(df.get('action'));
           /*for (var value of df.values()) {//check content in form data
@@ -88,6 +89,9 @@ e.preventDefault();
                 success: function (xhr,status) {
                   var response= xhr;
                   console.log(response);
+                  if(response.resultado==='updated'){
+                    window.open('./mycourses.php',"_self");
+                  }
                 },
                 error: function (xhr,error,status) { 
                   var response= xhr;

@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $(".btnEdit").on('click', loadData);
+    $(".btnDelete").on('click', deleteData);
     $(".btnN").on('click', newCourse);
 });
 
@@ -47,6 +48,9 @@ function loadData(e) {
     });
 
  
+}
+function deleteData(e) {
+    
 }
 function newCourse(e){
     $('#newC').find('.modal-title').text('Nuevo Curso');

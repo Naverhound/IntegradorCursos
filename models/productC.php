@@ -60,13 +60,14 @@ $action=$_POST['action'];
         }    
         echo json_encode($respuesta);
     }else if($action==='update'){
-        $id=$_POST['idcourse'];
+        $id =filter_var($_POST['idc'], FILTER_SANITIZE_NUMBER_INT);
         $name=$_POST['name'];
         $cost=$_POST['cost'];
         $category=$_POST['category'];
         $description =$_POST['description'];
-        if($name!=''||$id!=''||$cost!=''||$category!=''||$description!=''){
-            $statement=$conn->prepare('UPDATE courses name=? cost=? cat=? descript=? SET  WHERE id=?');
+        $imageOld =$_POST['imageOld'];
+        if($name!=''||$id!=''||$cost!=''||$category!=''||$imageOld!=''){
+            $statement=$conn->prepare('UPDATE courses SET name=?,cost=?,cat=?,descript=? WHERE id=?');
             $statement->bind_param('ssssi',$name,$cost,$category,$description,$id);
             $statement->execute();
 
@@ -77,10 +78,14 @@ $action=$_POST['action'];
                 $mime = $_FILES['image']['type'];
 
                 if($mime == 'image/jpg' || $mime == 'image/jpeg' || $mime == 'image/pjpg' || $mime == 'image/png' || $mime == 'image/x-png' || $mime == 'image/gif'){
+                    if (file_exists('../img/coursesP/' . $imageOld)) {
+                        unlink('../img/coursesP/' . $imageOld);
+                    }
                         $random1 = rand(1, 999999999);
                         $random2 = rand(1, 999999999);
                         $sdate = date("Y_m_d_H_i_s");
                         $Fname = $sdate . '_' . $random1 . '_' . $random2 . '.' . $extension;
+
                             if(move_uploaded_file($_FILES['image']['tmp_name'], '../img/coursesP/' . $Fname)){
                                 $statement=$conn->prepare('UPDATE courses SET img=? WHERE id=?');
                                 $statement->bind_param('si',$Fname,$id);

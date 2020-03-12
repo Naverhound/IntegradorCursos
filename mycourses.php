@@ -116,7 +116,7 @@ session_start();
               <div class="text-right">
                 <div class="text-warning">$<?php echo $row['cost']?></div>
                 <div class="">
-                <a href="#" class="basura"><i class="fa fa-trash"></i></a>
+                <a href="#" class="btnDelete"><i class="fa fa-trash"></i></a>
                     <a href="#" class="btnEdit"><i class="fa fa-edit" data-toggle="modal" data-target="#newC"></i></a>
                 </div>
               </div>
