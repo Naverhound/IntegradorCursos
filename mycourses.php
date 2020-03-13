@@ -94,6 +94,25 @@ session_start();
                 </div>
               </div>
             </div>
+            <div class="modal" id="delete" tabindex="-1" role="dialog">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Eliminar Curso</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Estas a punto de eliminar este curso.<br>¿ Estás Seguro ?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger btnDelete" >Simón</button>
+                  </div>
+                </div>
+              </div>
+            </div>
       <!--END OF Modals-->
       <div class="content bg-red border border-primary mt-5">
         <div class="row">
@@ -116,7 +135,7 @@ session_start();
               <div class="text-right">
                 <div class="text-warning">$<?php echo $row['cost']?></div>
                 <div class="">
-                <a href="#" class="btnDelete"><i class="fa fa-trash"></i></a>
+                <a href="#" class="delete"><i class="fa fa-trash"data-toggle="modal" data-target="#delete"></i></a>
                     <a href="#" class="btnEdit"><i class="fa fa-edit" data-toggle="modal" data-target="#newC"></i></a>
                 </div>
               </div>

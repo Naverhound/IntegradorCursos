@@ -2,6 +2,7 @@ $(document).ready(function () {
     $(".btnEdit").on('click', loadData);
     $(".btnDelete").on('click', deleteData);
     $(".btnN").on('click', newCourse);
+    $(".delete").on('click', sendId);
 });
 
 function loadData(e) {
@@ -40,17 +41,42 @@ function loadData(e) {
         error: function (xhr,error,status) { 
             var response= xhr;
             console.log('Error' ,response.error);
-            if(response==='nullID'){
-                alert('Id de producto inexistente')
-            }
+            
             
           }
     });
 
  
 }
-function deleteData(e) {
+function sendId(e) {
+     $("#delete").find(".btn-danger").attr('data-id', $(e.target).closest('.Course').attr('data-id'));
+   }
+function deleteData(e){
     
+    const idC=($(e.target).attr('data-id'));
+    console.log(idC);
+ $.ajax({
+        type: "GET",
+        url: `./models/productC.php?idc=${idC}&action=eliminate`,
+        dataType: "json",
+        processData: false,
+        contentType: false,
+        success: function (xhr,status) {
+            var response= xhr;
+            console.log(response.respuesta);
+            if(response.respuesta==='eliminated'){
+                window.open('./mycourses.php',"_self");
+            }  
+        },
+        error: function (xhr,error,status) { 
+            var response= xhr;
+            console.log('Error' ,response);
+            if(response==='nullID'){
+                alert('Id de producto inexistente')
+            }
+            
+          }
+    });
 }
 function newCourse(e){
     $('#newC').find('.modal-title').text('Nuevo Curso');

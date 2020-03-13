@@ -152,8 +152,40 @@ echo json_encode($respuesta);*/
             );
         }
     echo json_encode($respuesta);
-    }
+    }//end if for searching course data
     else if($action==='eliminate'){
 
-    }
+        $idc=filter_var($_GET['idc'], FILTER_SANITIZE_NUMBER_INT);
+        /*$respuesta = array(
+            'respuesta' => $idc
+        );*/
+        try { 
+            
+            $statement=$conn->prepare('SELECT img FROM courses WHERE id=?');
+            $statement->bind_param('i',$idc);
+            $statement->execute();
+            $statement->bind_result($img);
+            $statement->fetch();
+    
+            if (file_exists('../img/coursesP/' . $img)) {
+                unlink('../img/coursesP/' . $img);
+            }
+            $statement->close();
+            $statement=$conn->prepare('DELETE FROM courses WHERE id=?');
+            $statement->bind_param('i',$idc);
+            $statement->execute();
+
+            $respuesta= array(
+                'respuesta'=>'eliminated'
+            );
+            $statement->close();
+            $conn->close();
+        } catch (Exception $e) {
+            $respuesta = array(
+                'error' => $e->getMessage()
+            );
+        }
+        
+        echo json_encode($respuesta);
+    }//end if for eliminate course
 }//end IF for GET petitions

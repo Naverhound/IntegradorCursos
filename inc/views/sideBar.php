@@ -30,7 +30,7 @@ if(isset($_SESSION['name'])||isset($_SESSION['status'])){
          CurseTopia
         </a>
     <?php }?>
-        <a href="" class="simple-text logo-normal">
+        <a href="./index.php" class="simple-text logo-normal">
           Course Topia
         </a>
       </div>
