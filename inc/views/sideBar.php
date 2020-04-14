@@ -1,16 +1,5 @@
 <?php
-if(isset($_SESSION['name'])||isset($_SESSION['status'])){
-  $user=$_SESSION['name'];
-  $status=$_SESSION['status'];
-  $numerito=1;
-  $imagen=$_SESSION['img'];
-}else{
-  $status='';
-  $numerito=0;
-  $user='';
-  $imagen='';
-}
-
+require './inc/functions/initComps.php';
 ?>
 <div class="sidebar " data-color="orange">
       <!--
@@ -22,7 +11,7 @@ if(isset($_SESSION['name'])||isset($_SESSION['status'])){
         </a>
 
         <?php if($numerito==1){ ?>
-          <a href="" class="simple-text logo-normal">
+          <a href="#" class="simple-text logo-normal" data-idu="<?php echo($idu);?>" >
          <?php echo($user);?>
         </a>
     <?php }else{?>
@@ -30,9 +19,6 @@ if(isset($_SESSION['name'])||isset($_SESSION['status'])){
          CurseTopia
         </a>
     <?php }?>
-        <a href="./index.php" class="simple-text logo-normal">
-          Course Topia
-        </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">

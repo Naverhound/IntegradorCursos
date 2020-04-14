@@ -1,8 +1,6 @@
-
-<?php
-session_start();
+<?php 
+require './inc/functions/session.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="en" >
 
@@ -41,85 +39,89 @@ session_start();
         </h2>
       </div>
       <!--Modals-->
-            <div class="modal fade" id="newC" tabindex="-1" role="dialog" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form id="newC-Form" data-action=''>
-                      <div class="form-group">
-                        <label for="name">Nombre de curso</label>
-                        <input type="text"
-                          class="form-control" name="" id="name" aria-describedby="helpId" placeholder="Ej: Curso de GO en 2 Hrs">
-                      </div>
-                      <div class="form-group">
-                        <label for="cost">Costo de curso</label>
-                        <input type="number"
-                          class="form-control" name="" id="cost" aria-describedby="helpId" placeholder="Ej: $150.00">
-                      </div>
-                      <div class="form-group">
-                        <label for="img"></label>
-                        <input type="file" class="form-control-file" name="" id="img" placeholder="" aria-describedby="fileHelpId">
-                        <small id="fileHelpId" class="form-text text-muted">Clic para Cargar imagen</small>
-                      </div>
-                      <div class="form-group">
-                        <label for="cat">Categoría</label>
-                        <input type="text"
-                          class="form-control" name="" id="cat" aria-describedby="helpId" placeholder="Ej: Tecnología">
-                      </div>
-                      <div class="form-group">
-                        <label for="des">Descripción del curso</label>
-                        <textarea class="form-control p-0" name="" id="des" rows="2"></textarea>
-                      </div>
-                      <div class="form-group">
-                        <input type="hidden"
-                          class="form-control" name="" id="idC" aria-describedby="helpId">
-                      </div>
-                      <div class="form-group">
-                        <input type="hidden"
-                          class="form-control" name="" id="imgOld" aria-describedby="helpId">
-                      </div>
-                    
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary" >Confirmar Datos</button>
-                  </div>
-                </form>
-                </div>
-              </div>
-            </div>
-            <div class="modal" id="delete" tabindex="-1" role="dialog">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title">Eliminar Curso</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p>Estas a punto de eliminar este curso.<br>¿ Estás Seguro ?</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-danger btnDelete" >Simón</button>
+            <!--Modal for products CU (create update)-->
+              <div class="modal fade" id="newC" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title"></h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="newC-Form" data-action=''>
+                        <div class="form-group">
+                          <label for="name">Nombre de curso</label>
+                          <input type="text"
+                            class="form-control" name="" id="name" aria-describedby="helpId" placeholder="Ej: Curso de GO en 2 Hrs">
+                        </div>
+                        <div class="form-group">
+                          <label for="cost">Costo de curso</label>
+                          <input type="number"
+                            class="form-control" name="" id="cost" aria-describedby="helpId" placeholder="Ej: $150.00">
+                        </div>
+                        <div class="form-group">
+                          <label for="img"></label>
+                          <input type="file" class="form-control-file" name="" id="img" placeholder="" aria-describedby="fileHelpId">
+                          <small id="fileHelpId" class="form-text text-muted">Clic para Cargar imagen</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="cat">Categoría</label>
+                          <input type="text"
+                            class="form-control" name="" id="cat" aria-describedby="helpId" placeholder="Ej: Tecnología">
+                        </div>
+                        <div class="form-group">
+                          <label for="des">Descripción del curso</label>
+                          <textarea class="form-control p-0" name="" id="des" rows="2"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <input type="hidden"
+                            class="form-control" name="" id="idC" aria-describedby="helpId">
+                        </div>
+                        <div class="form-group">
+                          <input type="hidden"
+                            class="form-control" name="" id="imgOld" aria-describedby="helpId">
+                        </div>
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                      <button type="submit" class="btn btn-primary" >Confirmar Datos</button>
+                    </div>
+                  </form>
                   </div>
                 </div>
               </div>
-            </div>
+            <!--END OF Modal for products CU (create update)-->
+            <!--Modal for pruduct D (delete)-->
+              <div class="modal" id="delete" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Eliminar Curso</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Estas a punto de eliminar este curso.<br>¿ Estás Seguro ?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                      <button type="button" class="btn btn-danger btnDelete" >Simón</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!--END OF Modal for pruduct D (delete)-->
       <!--END OF Modals-->
       <div class="content bg-red border border-primary mt-5">
         <div class="row">
 
         <?php
             include './inc/functions/conection.php';
-            $result = $conn->query("SELECT * FROM courses") or die($conection->error);
+$result = $conn->query("SELECT * FROM courses WHERE idcreator={$idu}") or die($conection->error);
             while ($row = mysqli_fetch_array($result)) {
             ?>
 

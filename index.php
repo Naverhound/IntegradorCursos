@@ -1,18 +1,6 @@
 <?php
-
-session_start();
-if(isset($_SESSION['name'])||isset($_SESSION['status'])){
-  $user=$_SESSION['name'];
-  $status=$_SESSION['status'];
-  $numerito=1;
-  $imagen=$_SESSION['img'];
-}else{
-  $status='';
-  $numerito=0;
-  $user='';
-  $imagen='';
-}
-
+require './inc/functions/session.php';
+require './inc/functions/initComps.php';
 ?>
 <!--
 
@@ -68,10 +56,71 @@ if(isset($_SESSION['name'])||isset($_SESSION['status'])){
         </div>
       </div>
 
+       <!--Modals-->
+            <!--Modal for pruduct D (delete)-->
+              <div class="modal" id="shopCart" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">¿ Añadir a Carrito o Comprar?</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form action="./models/PPpayments.php" method="POST" >
+                        <div class="form-group">
+                          <input type="hidden" class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="name">
+                        </div>
+                        <div class="form-group">
+                          <input type="hidden" class="form-control" name="cost" id="cost" aria-describedby="helpId" placeholder="cost">
+                        </div>
+                        <div class="form-group">
+                          <input type="hidden" class="form-control" name="descript" id="descript" aria-describedby="helpId" placeholder="descript">
+                        </div>
+                      </form>
+                      <a href="#" class="h1 ppp"><i class="fab fa-cc-paypal" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!--END OF Modal for pruduct D (delete)-->
+      <!--END OF Modals-->
 
       <div class="content bg-red border border-primary">
         <a href=""><?php echo($user);?></a>
         <h1><?php echo($imagen);?></h1>
+        <div class="row">
+          <?php
+              include './inc/functions/conection.php';
+               $result = $conn->query("SELECT * FROM courses") or die($conection->error);
+              while ($row = mysqli_fetch_array($result)) {
+              ?>
+
+          <div class="bg-dark mt-3 mr-3 Course" data-id="<?php echo $row['id']?>">
+
+              <div class="imagen">
+                <img src="./img/coursesP/<?php echo $row['img']?>" width="200px" height="250px">
+              </div>
+              <div class="" >
+                <h3><a href="#">Categoria: <?php echo $row['cat']?></a></h3>
+                <h4><a href="#"><?php echo $row['name']?></a></h4>
+                <p class="text-warning text-truncate" >Descripcion: <?php echo $row['descript']?></p>
+                <div class="text-right">
+                  <div class="text-warning">$<?php echo $row['cost']?></div>
+                </div>
+                <div class="text-right">
+                  <a href="#" class="cart" ><i class="fa fa-shopping-basket" aria-hidden="true" style="color: white" 
+                  data-toggle="modal" data-target="#shopCart">Añadir</i></a>
+                </div>
+              </div>
+            </div>
+
+            <?php } ?>
+        </div>
       </div>
 
       <?php include'./inc/views/footer.php'?>
@@ -82,6 +131,8 @@ if(isset($_SESSION['name'])||isset($_SESSION['status'])){
   <script src="./assets/js/core/popper.min.js"></script>
   <script src="./assets/js/core/bootstrap.min.js"></script>
   <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="./js/main.js"></script>
+  <script src="./js/ppp.js"></script>
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->

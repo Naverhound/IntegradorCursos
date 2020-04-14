@@ -26,6 +26,7 @@ e.preventDefault();
           if(n==''||c==''||ca==''||i2==''){//valida que alguno venga vacio(actua cuando alguno de los mencionados SI está vacio)
             alert('Datos sin llenar correctamente o falta imagen')
             }else{
+              var idu=$('.logo :last-child').attr('data-idu');
                 var df=new FormData();//formulario serializado que se le agregarán los datos del form del HTML
                     df.append('name',n);
                     df.append('cost',c);
@@ -33,7 +34,7 @@ e.preventDefault();
                     df.append('image',i);
                     df.append('description',d);
                     df.append('action',action);
-                    df.append('idcreator',3);
+                    df.append('idcreator',idu);
                   //  console.log(...df);//se confirmó que los datos están agregandose correctamente
                   //console.log(df.get('action'));
                   /*for (var value of df.values()) {//check content in form data
@@ -51,6 +52,16 @@ e.preventDefault();
                           var response= xhr;
 
                           console.log(response);
+                          if(response.resultado==="done"){
+                            
+                            $('#newC').find('.modal-title').text('Nuevo Curso');
+                            $('#newC-Form').attr('data-action','insert');
+                            $('#newC-Form').find('#name').val('');
+                            $('#newC-Form').find('#cost').val('');
+                            $('#newC-Form').find('#cat').val('');
+                            $('#newC-Form').find('#des').val('');
+                            window.open('./mycourses.php',"_self");
+                          }
                         },
                         error: function (xhr,error,status) {
                           var response= xhr;

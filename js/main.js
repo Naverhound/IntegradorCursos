@@ -1,8 +1,10 @@
-$(document).ready(function () {
+    $(document).ready(function () {
+    console.log($('.logo :last-child()').attr('data-idu'));
     $(".btnEdit").on('click', loadData);
     $(".btnDelete").on('click', deleteData);
     $(".btnN").on('click', newCourse);
     $(".delete").on('click', sendId);
+    $(".cart").on('click', sendId);
 });
 
 function loadData(e) {
@@ -49,7 +51,18 @@ function loadData(e) {
  
 }
 function sendId(e) {
-     $("#delete").find(".btn-danger").attr('data-id', $(e.target).closest('.Course').attr('data-id'));
+    var trigger=$(e.target).parent();//the one who fired the event/function
+    //console.log(e.target);
+    
+    if(trigger.hasClass('delete')){
+        //alert('entrando ando')
+        console.log(trigger.closest('.Course').attr('data-id'));
+        $("#delete").find(".btn-danger").attr('data-id', $(e.target).closest('.Course').attr('data-id'));
+    }else if(trigger.hasClass('cart')){
+        console.log(trigger.closest('.Course').attr('data-id'));
+        $("#shopCart").attr('data-id', $(e.target).closest('.Course').attr('data-id'));//add the course Id to the shopCart modal, in the principal div container, where the modal Id is.
+    }    
+     
    }
 function deleteData(e){
     
@@ -79,10 +92,5 @@ function deleteData(e){
     });
 }
 function newCourse(e){
-    $('#newC').find('.modal-title').text('Nuevo Curso');
-    $('#newC-Form').attr('data-action','insert');
-    $('#newC-Form').find('#name').val('');
-    $('#newC-Form').find('#cost').val('');
-    $('#newC-Form').find('#cat').val('');
-    $('#newC-Form').find('#des').val('');
+    //some actions here
 }

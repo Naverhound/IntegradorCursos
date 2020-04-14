@@ -1,16 +1,5 @@
 <?php
-if(isset($_SESSION['name'])||isset($_SESSION['status'])){
-  $user=$_SESSION['name'];
-  $status=$_SESSION['status'];
-  $numerito=1;
-  $imagen=$_SESSION['img'];
-}else{
-  $status='';
-  $numerito=0;
-  $user='';
-  $imagen='';
-}
-
+require './inc/functions/initComps.php';
 ?>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
@@ -55,6 +44,16 @@ if(isset($_SESSION['name'])||isset($_SESSION['status'])){
                   <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </li>
+              <?php if($numerito!=0){?>
+              <li class="nav-item ">
+                <a class="nav-link " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Carrito</span>
+                  </p>
+                </a>
+              </li>
+              <?php } ?>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="now-ui-icons users_single-02"></i>
